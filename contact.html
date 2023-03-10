@@ -13,9 +13,35 @@
         type="text/css" />
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Rosie</title>
+
+    <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+</script>
+<script type="text/javascript">
+(function(){
+  emailjs.init("5MVvFqVygsspPWQw4");
+})();
+function SendMail(){
+    let params = {
+        from_name : document.getElementById('fullName').value,
+        email_id : document.getElementById('email_id').value,
+        message : document.getElementById('message').value
+    }
+    emailjs.send('service_vld7xzc', 'NikitaCaspi', params).then(function(res)){
+        alert('Success!' + res.status);
+    }
+}
+</script>
+    
 </head>
 
 <body>
+    <input type="text" id="fullName" placeholder="Full Name" required /><br />
+    <input type="email" id="email_id" placeholder="Email Id" required /><br />
+    <textarea placeholder="Message" id="message" required></textarea><br />
+    <button onclick="sendMail()"  >Send</button>
+
+
     <header>
         <div class="row no-gutters">
             <a class="col-md-4 logo" href="index.html"></a>
@@ -138,14 +164,6 @@
             </div>
         </div>
     </footer>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
-    </script>
-    <script type="text/javascript">
-        (function () {
-            emailjs.init("fAnelyRjJtIge6Ma4");
-        })();
-    </script>
-    <script src="assets/js/send-email.js"></script>
 </body>
 
 </html>
